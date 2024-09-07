@@ -25,7 +25,6 @@ public class PersonController {
         return "Person successfully saved";
     }
 
-
     @GetMapping("/{email}")
     public Person findByEmail(@PathVariable String email) {
         return service.findByEmail(email);

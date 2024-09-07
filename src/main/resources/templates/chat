@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+</head>
+<body>
+<h1>Chat between Users</h1>
+
+<!-- Форма для отправки нового сообщения -->
+<form th:action="@{/chat}" method="post">
+  <input type="hidden" name="senderId" value="1"/> <!-- ID отправителя -->
+  <input type="hidden" name="receiverId" value="2"/> <!-- ID получателя -->
+  <label for="message">Message:</label>
+  <input type="text" id="message" name="text" required>
+  <button type="submit">Send</button>
+</form>
+
+<!-- Список сообщений между пользователями -->
+<!--<h2>Conversation</h2>
+<div th:each="message : ${messages}">
+  <p><strong th:text="${message.senderId}"></strong>: <span th:text="${message.text}"></span> <em th:text="${message.timestamp}"></em></p>
+</div>-->
+
+</body>
+</html>

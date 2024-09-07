@@ -8,7 +8,7 @@ import java.time.Period;
 
 @Data
 @Entity
-@Table(name = "Persones")
+@Table(name = "persones")
 public class Person {
     @Id
     @GeneratedValue
