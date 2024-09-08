@@ -7,19 +7,32 @@
 <body>
 <h1>Chat between Users</h1>
 
+<!-- Форма для выбора собеседника -->
+<form method="get" th:action="@{/chat}">
+  <input type="hidden" name="senderId" value="1"/> <!-- ID отправителя -->
+  <label for="receiverId">Choose a user to chat with:</label>
+  <select id="receiverId" name="receiverId">
+    <option th:each="person : ${persons}" th:value="${person.id}" th:text="${person.firstName + ' ' + person.lastName}"></option>
+  </select>
+  <button type="submit">Select Chat</button>
+</form>
+
 <!-- Форма для отправки нового сообщения -->
 <form th:action="@{/chat}" method="post">
   <input type="hidden" name="senderId" value="1"/> <!-- ID отправителя -->
-  <input type="hidden" name="receiverId" value="2"/> <!-- ID получателя -->
+  <input type="hidden" name="receiverId" th:value="${selectedReceiverId}"/> <!-- ID получателя -->
   <label for="message">Message:</label>
-  <input type="text" id="message" name="text" required>
+  <input type="text" id="message" name="text">
   <button type="submit">Send</button>
 </form>
 
-
 <h2>Conversation</h2>
 <div th:each="message : ${messages}">
-  <p><strong th:text="${message.senderId}"></strong>: <span th:text="${message.text}"></span> <em th:text="${message.timestamp}"></em></p>
+  <p>
+    <strong th:text="${message.senderId}"></strong>:
+    <span th:text="${message.text}"></span>
+    <em th:text="${message.timestamp}"></em>
+  </p>
 </div>
 
 </body>

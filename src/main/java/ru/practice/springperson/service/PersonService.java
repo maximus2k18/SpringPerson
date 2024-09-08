@@ -11,4 +11,5 @@ public interface PersonService {
     Person findByEmail(String email);
     void deletePerson(String email);
     long countPerson();
+    List<Person> getAllPersonsExcept(Long senderId);
 }

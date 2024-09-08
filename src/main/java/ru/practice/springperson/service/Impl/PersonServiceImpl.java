@@ -15,6 +15,7 @@ import java.util.List;
 @Primary
 public class PersonServiceImpl implements PersonService {
     private final PersonRepository repository;
+
     @Override
     public List<Person> getPersonList() {
         return repository.findAll();
@@ -44,5 +45,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public long countPerson() {
         return repository.count();
+    }
+
+    @Override
+    public List<Person> getAllPersonsExcept(Long senderId) {
+        return repository.findAllByIdNot(senderId);
     }
 }

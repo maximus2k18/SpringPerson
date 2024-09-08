@@ -38,6 +38,11 @@ public class InMemoryPersonServiceImpl implements PersonService {
     }
 
     @Override
+    public List<Person> getAllPersonsExcept(Long senderId) {
+        return null;
+    }
+
+    @Override
     public Person findByEmail(String email) {
         return repository.findByEmail(email);
     }
